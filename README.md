@@ -4,10 +4,10 @@
 
 ## 运行  
 
-### Python源码运行
+#### Python源码运行
 
 需要python/pandas库，如未安装请使用`pip install pandas`安装该依赖库，运行ClassTable.py即可
 
-### Windows程序运行
+#### Windows程序运行
 
 点击ClassTable.exe即可运行
