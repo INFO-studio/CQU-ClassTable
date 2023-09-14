@@ -24,14 +24,15 @@ timetable = [["083000", "091500"],
              ["172000", "180500"],
              ["190000", "194500"],
              ["195500", "204000"], 
-             ["205000", "213500"]]
+             ["205000", "213500"],
+             ["214500", "223000"]]
 timezone = "+8"
 
 
 numstr = ["0","1","2","3","4","5","6","7","8","9"]
 day0str = ["一","二","三","四","五","六"]
 start = datetime.datetime.strptime(start, "%Y%m%d")
-for i in range(12):
+for i in range(13):
     timetable[i][0] = datetime.datetime.strptime(timetable[i][0], "%H%M%S")
     timetable[i][1] = datetime.datetime.strptime(timetable[i][1], "%H%M%S")
 fm=pd.read_excel(path+"课表.xlsx",sheet_name="Sheet0", skiprows=1)
