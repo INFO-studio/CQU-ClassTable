@@ -11,7 +11,7 @@ print("""
     将下载好的"课表.xlsx"拖入此页面
       """)
 path = input("请拖入课表: ")
-path = path[:-8]
+path = path[:path.rfind("/")+1]
 start = input("请输入学期起始日期（2023学年上学期为“20230828”）: ")
 timetable = [["083000", "091500"], 
              ["092500", "101000"], 
@@ -30,13 +30,18 @@ timezone = "+8"
 
 
 numstr = ["0","1","2","3","4","5","6","7","8","9"]
-day0str = ["一","二","三","四","五","六"]
+day0str = ["一","二","三","四","五","六","日"]
 start = datetime.datetime.strptime(start, "%Y%m%d")
 for i in range(13):
     timetable[i][0] = datetime.datetime.strptime(timetable[i][0], "%H%M%S")
     timetable[i][1] = datetime.datetime.strptime(timetable[i][1], "%H%M%S")
 fm=pd.read_excel(path+"课表.xlsx",sheet_name="Sheet0", skiprows=1)
 event = """BEGIN:VCALENDAR
+METHOD:PUBLISH
+VERSION:2.0
+X-PUBLISHED-TTL:PT1H
+REFRESH-INTERVAL;VALUE=DURATION:PT1H
+PRODID:-//INFOstd//Powered by INFOstd//ZH
 """
 uid = 0
 print("""
